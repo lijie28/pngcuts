@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
-import os  
-  
+import os
+
 
 '''
 def dirlist(path, allfile):  
@@ -21,26 +21,27 @@ def dirlist(path, allfile):
 # print dirlist(os.path.dirname(os.path.realpath(__file__)), []) 
 '''
 
-def file_name(file_dir):   
-# 先输入文件夹路径，编历当前文件夹下的所有文件（取出路径，返回数组）
+
+def file_name(file_dir):
+    # 先输入文件夹路径，编历当前文件夹下的所有文件（取出路径，返回数组）
     all_files = []
-    for root, dirs, files in os.walk(file_dir):  
-        # print(root) #当前目录路径  
-        # print(dirs) #当前路径下所有子目录  
-        # print(files) #当前路径下所有非目录子文件  
+    for root, dirs, files in os.walk(file_dir):
+        # print(root) #当前目录路径
+        # print(dirs) #当前路径下所有子目录
+        # print(files) #当前路径下所有非目录子文件
         all_files = files
-    return all_files  
+    return all_files
 
 
 def splitit(name_list):
-# 取出文件名及后缀(返回数组)
+    # 取出文件名及后缀(返回数组)
     new_list = []
-    for a in name_list:
-        new_list.append(os.path.splitext(a))
+    for name in name_list:
+        new_list.append(os.path.splitext(name))
     return new_list
 
-
-print splitit(file_name(os.path.dirname(os.path.realpath(__file__))))
+print os.path.dirname(os.path.realpath(__file__))
+print file_name(os.path.dirname(os.path.realpath(__file__)))
 
 # 判断文件是否png，是的话输出图片大小，不是的话抛出文件名及后缀
 
