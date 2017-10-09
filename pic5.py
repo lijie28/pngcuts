@@ -18,17 +18,23 @@ def ResizeImage(filein, fileout, width, height, type):
     img = Image.open(filein)
     # resize image with high-quality
     out = img.resize((width, height), Image.ANTIALIAS)
+
+
     out.save(fileout, type)
 
 
 if __name__ == "__main__":
     filein = r'test.png'
-    fileout = r'testout.png'
+        
+        
+    fileout = r'icon/%s' % 'testout1111.png'
+    # fileout = r'icon/testout1111.png'
+
     width = 60
     height = 85
     type = 'png'
     ResizeImage(filein, fileout, width, height, type)
-
+    print '成功',fileout
 
 def BFS_Dir(dirPath, dirCallback=None, fileCallback=None):
     queue = []
