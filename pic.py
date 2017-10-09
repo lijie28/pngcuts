@@ -87,7 +87,7 @@ def ResizeImage(filein, fileout, width, height):
     # resize image with high-quality
     out = img.resize((width, height), Image.ANTIALIAS)
     out.save(fileout, 'png')
-    print '保存'
+    # print '保存'
 
 def AddDesc(oname,desc):
     #名字在后缀前加@2x,@3x
@@ -107,16 +107,18 @@ def get_new_png(is_png, is_not_png):
 
         img = Image.open(pic)
 
-        dirname = os.path.splitext(pic)[0] +'.imageset'
+        dirname = 'icon/'+os.path.splitext(pic)[0] +'.imageset'
+        get_file_path(dirname)
+
         print  '文件夹名',dirname 
         pic_in =  pic
-        pic_out_3x = 'icon/%s' % AddDesc(pic,'@3x')
+        pic_out_3x = '%s/%s' % (dirname, AddDesc(pic,'@3x'))
         width_3x = img.size[0]
         height_3x = img.size[1]
         ResizeImage (pic_in,pic_out_3x,width_3x,height_3x)
 
 
-        pic_out_2x = 'icon/%s' % AddDesc(pic,'@2x')
+        pic_out_2x = '%s/%s' % (dirname, AddDesc(pic,'@2x'))
         width_2x = int(width_3x*750/1242)
         height_2x = int(height_3x*1334/2208)
         ResizeImage (pic_in,pic_out_2x,width_2x,height_2x)
