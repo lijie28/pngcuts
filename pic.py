@@ -23,11 +23,17 @@ print dirlist(os.path.dirname(os.path.realpath(__file__)), [])
 '''
 
 
+
+
+def get_file_path(file_path):
+    if not os.path.exists(file_path):
+        os.makedirs(file_path)
+
 file_path = os.getcwd() + '/icon/'
+get_file_path(file_path)
 print file_path
-if not os.path.exists(file_path):
-    os.makedirs(file_path)
-    
+
+
 def file_name(file_dir):
     # 先输入文件夹路径，编历当前文件夹下的所有文件（取出路径，返回数组）
     all_files = []
@@ -101,6 +107,8 @@ def get_new_png(is_png, is_not_png):
 
         img = Image.open(pic)
 
+        dirname = os.path.splitext(pic)[0] +'.imageset'
+        print  '文件夹名',dirname 
         pic_in =  pic
         pic_out_3x = 'icon/%s' % AddDesc(pic,'@3x')
         width_3x = img.size[0]
